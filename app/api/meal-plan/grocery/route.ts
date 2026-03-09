@@ -3,6 +3,8 @@ import { createServiceClient } from "@/lib/supabase/server";
 import { generateGroceryList } from "@/lib/anthropic";
 import { makeRedmartUrl, makeLazadaUrl } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createServiceClient();

@@ -3,6 +3,8 @@ import { createServiceClient } from "@/lib/supabase/server";
 import { curateWeeklyMealPlan, DayCuisineTheme } from "@/lib/anthropic";
 import { getMonday, formatDate, DAY_THEMES } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createServiceClient();

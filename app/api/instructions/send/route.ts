@@ -3,6 +3,8 @@ import { createServiceClient } from "@/lib/supabase/server";
 import { getCachedTranslation } from "@/lib/translations";
 import { sendPushNotification } from "@/lib/push";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createServiceClient();
