@@ -1,13 +1,5 @@
 import webpush from "web-push";
 
-webpush.setVapidDetails(
-  process.env.VAPID_SUBJECT || "mailto:admin@homepilot.app",
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
-);
-
-export { webpush };
-
 export async function sendPushNotification(
   subscription: webpush.PushSubscription,
   payload: {
@@ -19,6 +11,11 @@ export async function sendPushNotification(
     tag?: string;
   }
 ) {
+  webpush.setVapidDetails(
+    process.env.VAPID_SUBJECT || "mailto:admin@homepilot.app",
+    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
+    process.env.VAPID_PRIVATE_KEY!
+  );
   try {
     await webpush.sendNotification(subscription, JSON.stringify(payload));
     return { success: true };
